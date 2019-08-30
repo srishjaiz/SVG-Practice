@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="svg-div">
+
+        </div>
+    <script>
+        function f(){
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width","200");
+            svg.setAttribute("height","200");
+            var svg_div= document.getElementById("svg-div");
+            var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+            newElement.setAttribute("d","M 100 10 L 150 80 L 110 90 L 150 180 L 100 150 L 20 180 L 70 90 L 20 90 Z");
+            newElement.style.stroke = "green"; 
+            newElement.style.strokeWidth = "5";
+            newElement.style.fill="red"
+            svg.appendChild(newElement);
+            svg_div.appendChild(svg);
+        }
+        f();
+    </script>
+    </body>
+</html>
