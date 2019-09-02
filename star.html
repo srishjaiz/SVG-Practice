@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="svg-div">
+
+        </div>
+    <script>
+        function f(svg_width,svg_height,star_stroke,star_fill,star_strokewidth){
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width",svg_width);
+            svg.setAttribute("height",svg_height);
+            //svg.setAttribute("viewBox","0 0 "+svg_width+" "+svg_height);
+            box=0;
+            if(svg_height<=svg_width){
+                box=svg_height;
+            }
+            else{
+                box=svg_width;
+            }
+            
+            var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+            newElement.setAttribute("d",
+            "m "+((box + (svg_width - box)) / 2) + " " + (svg_height - box) / 2
+            +" l "+ (box*1/8) +" "+ (box*3/8) 
+            +" h "+ (box*3/8) 
+            +" l -"+ (box/4)+" "+ (box/4) 
+            +" l "+ (box/4) +" "+ (box*3/8) 
+            +" l -"+ (box/2) +" -"+ (box/4) 
+            +" l -"+(box/2) +" "+(box/4)
+            +" l "+(box/4)+" -"+(box*3/8)
+            +" l -"+(box/4)+" -"+(box/4)
+            +" h "+(box*3/8)
+            +" z");
+            newElement.style.stroke = star_stroke; 
+            newElement.style.strokeWidth = star_strokewidth;
+            newElement.style.fill=star_fill;
+            svg.appendChild(newElement);
+            var svg_div= document.getElementById("svg-div");
+            svg_div.appendChild(svg);
+        }
+        f(200,300,"green","red","5");
+    </script>
+    </body>
+</html>
